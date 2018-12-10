@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>main</title>
+</head>
+
+<style>
+  *:focus {
+    outline: none;
+  }
+
+  .query {
+    /* width: 60%; */
+    /* margin-left: 20%; */
+    /* margin-top: 3%; */
+    font-size: 20px;
+    height: 50px;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+  }
+
+  .divQuery {
+    width: 60%;
+    /* margin-left: 20%; */
+    margin-top: 3%;
+    font-size: 20px;
+    height: 50px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 5px;
+  }
+
+  .submit {
+    color: white;
+    font-size: 22px;
+    font-family: "Krungthep";
+    width: 100%;
+    height: 100%;
+    /* margin-left: 45%; */
+    background-color: #ff6601;
+    /* border-radius: 5px; */
+    border: None;
+  }
+
+  .divSubmit {
+    width: 11%;
+    height: 38px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    /* border-radius: 5px; */
+    background-color: #ff6601;
+    margin-top: 38px;
+  }
+
+  .title {
+    margin-top: 12%;
+    width: 400px;
+  }
+</style>
+
+<body class="container">
+
+  <div class="login">
+    <form action="/search" method="GET">
+      <center>
+        <a href="/" class="title">
+          <img src="logo.png" class="title"> </img>
+        </a>
+        <div class="divQuery">
+          <input type="text" name="query" class="query">
+        </div>
+        <div class="divSubmit">
+          <input type="hidden" name="page" value=0>
+          <input type='submit' name='submit' class="submit" value="search">
+        </div>
+      </center>
+    </form>
+
+
+</body>
+
+</html>

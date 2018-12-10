@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>query result</title>
+</head>
+<style>
+  *:focus {
+        outline: none;
+      }
+      .query {
+        font-size: 20px;
+        height: 40px;
+        width: 100%;
+        border: none;
+        border-radius: 5px;
+      }
+      .divQuery {
+        position: fixed;
+        width: 650px;
+        margin-left: 150px;
+        margin-top: 5px;
+        font-size: 20px;
+        height: 40px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        border-radius: 5px;
+      }
+      .submit {
+        color: white;
+        font-size: 18px;
+        font-family: "Krungthep";
+        width: 100%;
+        height: 100%;
+        background-color: #ff6601;
+        border: None;
+      }
+      .divSubmit {
+        position: fixed;
+        width: 120px;
+        height: 30px;
+        margin-left: 830px;
+        margin-top: 12px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        /* border-radius: 5px; */
+        background-color: #ff6601;
+      }
+      .title {
+        position: fixed;
+        margin-top: 0;
+        width: 140px;
+      }
+      .subtitle {
+        position: fixed;
+        font-size: 10px;
+        margin-top: 4%;
+      }
+      .result {
+        position: fixed;
+        margin-top: 100px;
+        width: 100%;
+        overflow-y: scroll;
+        height: 100%;
+      }
+      .movieTitle {
+        font-size: 25px;
+        color: #190DAB;
+      }
+      .movieSummary {
+        font-size: 18px;
+        width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        word-wrap: break-word;
+        max-height: 72px;
+        line-height: 18px;
+      }
+      .movieItem {
+        margin-left: 150px;
+        position: relative;
+        width: 650px;
+        margin-bottom: 20px;
+        height: auto;
+      }
+      .page{
+        margin-left: 150px;
+        position: relative;
+        width: 650px;
+        margin-bottom: 20px;
+        height: auto;
+      }
+      .highlight {
+        font-weight: bold;
+      }
+    </style>
+
+<body class="container">
+
+  <form action="/search" method="GET">
+    <a href="/" class="title">
+      <img src="logo.png" class="title"> </img>
+    </a>
+    <div class="divQuery">
+      <input type="text" name="query" class="query" id="query" value="<%= query_content %>"></input>
+    </div>
+    <div class="divSubmit">
+      <input type="hidden" name="page" value=0>
+      <input type="submit" name='submit' class="submit" value="search"></input>
+    </div>
+    <div class="result" id="result">
+      <% for(var i = 0; i < movies.sizeSync(); i ++) {%>
+      <div class="movieItem">
+        <a href="<%= movies.getSync(i).getUrlSync()%>" class="movieTitle" target="_blank">
+          <%= movies.getSync(i).getTitleSync()%></a>
+        <br>
+        <font style="color:#026620; size:10px;">
+          <%= movies.getSync(i).getUrlSync()%>
+        </font>
+        <div class="movieSummary">
+          <%- movies.getSync(i).getSummarySync()%>
+        </div>
+      </div>
+      <% } %>
+      <div style="height:10px;"></div>
+      <div class="page">
+        <center>
+          <% for(var i = 0; i < num_pages; i++) {%>
+          <a href="/search?query=<%=query_content%>&page=<%=i%>&submit=search">
+            <%=i+1%></a>
+          <% } %>
+        </center>
+      </div>
+      <div style="height:200px;"></div>
+    </div>
+  </form>
+</body>
+
+</html>
